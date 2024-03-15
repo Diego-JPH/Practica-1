@@ -43,5 +43,5 @@ while (attemps <= max_failures):
         print(f"¡Felicidades! Has adivinado la palabra secreta: {secret_word}")
         break
 else:
-    print(f"¡Oh no! Has agotado tus {max_attempts} intentos.")
+    print(f"¡Oh no! Has agotado tus {max_failures} fallos posibles.")
     print(f"La palabra secreta era: {secret_word}")
