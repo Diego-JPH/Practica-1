@@ -10,8 +10,38 @@ attemps = 0
 # Lista para almacenar las letras adivinadas
 guessed_letters = []
 print("¡Bienvenido al juego de adivinanzas!")
+difficulty = str(input("Elija una de las siguientes dificultades: \"facil\" - \"media\" - \"dificil\" "))
 print("Estoy pensando en una palabra. ¿Puedes adivinar cuál es?")
-word_displayed = "_" * len(secret_word)
+word_displayed = ""
+if (difficulty == "facil"):
+    for i in secret_word:
+        match i:
+            case "a":
+                word_displayed += "a"
+                guessed_letters += "a"
+            case "e":
+                word_displayed += "e"
+                guessed_letters += "e"
+            case "i":
+                word_displayed += "i"
+                guessed_letters += "i"
+            case "o":
+                word_displayed += "o"
+                guessed_letters += "o"
+            case "u":
+                word_displayed += "u"
+                guessed_letters += "u"
+            case _:
+                word_displayed += "_"
+elif (difficulty == "media"):
+    word_displayed += secret_word[0]
+    for i in range (1,(len(secret_word)-1)):
+        word_displayed += "_"
+    word_displayed += secret_word[-1]
+    guessed_letters.append(word_displayed[0])
+    guessed_letters.append(word_displayed[-1])
+else:
+    word_displayed = "_" * len(secret_word)
 # Mostrar la palabra parcialmente adivinada
 print(f"Palabra: {word_displayed}")
 while (attemps <= max_failures):
@@ -22,7 +52,7 @@ while (attemps <= max_failures):
         print("Ya has intentado con esa letra. Intenta con otra.")
         continue
     # Agregar la letra a la lista de letras adivinadas
-    guessed_letters.append(letter)
+    guessed_letters.append(letter)  
     # Verificar si la letra está en la palabra secreta
     if letter in secret_word and letter != "":
         print("¡Bien hecho! La letra está en la palabra.")
