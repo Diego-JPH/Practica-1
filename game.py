@@ -19,18 +19,33 @@ if (difficulty == "facil"):
             case "a":
                 word_displayed += "a"
                 guessed_letters += "a"
+            case "á":
+                word_displayed += "á"
+                guessed_letters += "á"
             case "e":
                 word_displayed += "e"
                 guessed_letters += "e"
+            case "é":
+                word_displayed += "é"
+                guessed_letters += "é"
             case "i":
                 word_displayed += "i"
                 guessed_letters += "i"
+            case "í":
+                word_displayed += "í"
+                guessed_letters += "í"
             case "o":
                 word_displayed += "o"
                 guessed_letters += "o"
+            case "ó":
+                word_displayed += "ó"
+                guessed_letters += "ó"
             case "u":
                 word_displayed += "u"
                 guessed_letters += "u"
+            case "ú":
+                word_displayed += "ú"
+                guessed_letters += "ú"
             case _:
                 word_displayed += "_"
 elif (difficulty == "media"):
@@ -38,8 +53,6 @@ elif (difficulty == "media"):
     for i in range (1,(len(secret_word)-1)):
         word_displayed += "_"
     word_displayed += secret_word[-1]
-    guessed_letters.append(word_displayed[0])
-    guessed_letters.append(word_displayed[-1])
 else:
     word_displayed = "_" * len(secret_word)
 # Mostrar la palabra parcialmente adivinada
@@ -66,6 +79,11 @@ while (attemps <= max_failures):
             letters.append(letter)
         else:
             letters.append("_")
+    if (difficulty == "media"):
+        letters.pop(0)
+        letters.pop()
+        letters.insert(0,secret_word[0])
+        letters.append(secret_word[-1])
     word_displayed = "".join(letters)
     print(f"Palabra: {word_displayed}")
     #Verificar si se ha adivinado la palabra completa
